@@ -12,7 +12,7 @@ public class AsciiArt
 	public static void main ( String[] args )
 	{
 		System.out.println("Zoe Chan" );
-		System.out.println("catepillar" );
+		System.out.println("caterpillar" );
 		System.out.println("\n\n\n\n" );
 
 		System.out.println("         _________________            " );
