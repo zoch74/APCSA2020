@@ -39,7 +39,7 @@ public class MilesPerHour
 	public void calcMPH()
 	{
 		double time = hours + ((double) minutes/60);
-		mph = Math.ceil(distance/time);
+		mph = Math.round(distance/time);
 		
 	}
 
