@@ -7,7 +7,7 @@ package Unit4;
 //Class -
 //Lab  -
 
-import static java.lang.System.*;
+//import static java.lang.System.*;
 import java.util.Scanner;
 
 public class DiscountRunner
@@ -16,9 +16,33 @@ public class DiscountRunner
 	{
 		Scanner keyboard = new Scanner(System.in);
 		
-		out.print("Enter the original bill amount :: ");
-		double amt = keyboard.nextDouble();
+		System.out.println("Enter the original bill amount :: ");
+		double amt1 = keyboard.nextDouble();
 		
-
+		System.out.println("Bill after discount :: " + String.format("%.2f\n", Discount.getDiscountedBill(amt1)));
+		
+		System.out.println("Enter the original bill amount :: ");
+		double amt2 = keyboard.nextDouble();
+		
+		System.out.println("Bill after discount :: " + String.format("%.2f\n", Discount.getDiscountedBill(amt2)));
+		
+		System.out.println("Enter the original bill amount :: ");
+		double amt3 = keyboard.nextDouble();
+		
+		System.out.println("Bill after discount :: " + String.format("%.2f\n", Discount.getDiscountedBill(amt3)));
+		
+		System.out.println("Enter the original bill amount :: ");
+		double amt4 = keyboard.nextDouble();
+		
+		System.out.println("Bill after discount :: " + String.format("%.2f\n", Discount.getDiscountedBill(amt4)));
+		
+		System.out.println("Enter the original bill amount :: ");
+		double amt5 = keyboard.nextDouble();
+		
+		System.out.println("Bill after discount :: " + String.format("%.2f\n", Discount.getDiscountedBill(amt5)));
+		
+		keyboard.close();
+		
+		
 	}
 }
