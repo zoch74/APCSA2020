@@ -7,16 +7,53 @@ package Unit4;
 //Class -
 //Lab  -
 
-import static java.lang.System.*;
+//import static java.lang.System.*;
 
 public class NumberVerify
 {
 	public static boolean isOdd( int num )
 	{
-		return true;
+		if (num > 0) {
+			if (num % 2 == 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else
+		{
+			num = num * -1;
+			if (num % 2 == 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			
+		}
+		
 	}
 	public static boolean isEven( int num )
 	{
-		return true;
-	}	
+		if (num > 0) {
+			if (num % 2 == 1) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+		else
+		{
+			num = num * -1;
+			if (num % 2 == 1) {
+				return false;
+			}
+			else {
+				return true;
+			}
+			
+		}
+	}
 }
