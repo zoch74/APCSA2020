@@ -21,6 +21,7 @@ public class VowelsRunner
 		System.out.println(  FirstLastVowel.go(  "catsandaplusdogsaplus###")    );
 		System.out.println(  FirstLastVowel.go(  "7")    );
 		System.out.println(  FirstLastVowel.go(  "E")    );
+		System.out.println(  FirstLastVowel.go(  "A")    );
 
 	}
 }
