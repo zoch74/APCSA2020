@@ -7,31 +7,50 @@ package Unit5;
 //Class -
 //Lab  -
 
-import static java.lang.System.*;
+//import static java.lang.System.*;
 
 public class StringEquality
 {
 	private String wordOne, wordTwo;
+	private Boolean same;
 
 	public StringEquality()
 	{
+		wordOne = "";
+		wordTwo = "";
+		same = false;
 	}
 
 	public StringEquality(String one, String two)
 	{
+		setWords(one, two);
+		same = false;
 	}
 
 	public void setWords(String one, String two)
 	{
+		wordOne = one;
+		wordTwo = two;
 	}
 
 	public boolean checkEquality( )
 	{
-		return false;
+		if (wordOne.equals(wordTwo)) {
+			same = true;
+		}
+		else {
+			same = false;
+		}
+		return same;
 	}
 
 	public String toString()
 	{
-		return wordOne + " does not have the same letters as " + wordTwo + "\n";
+		if (same == true) {
+			return wordOne + " has the same letters as " + wordTwo + "\n";
+		}
+		else {
+			return wordOne + " does not have the same letters as " + wordTwo + "\n";
+		}
 	}
 }
