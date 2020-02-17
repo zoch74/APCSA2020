@@ -12,10 +12,12 @@ public class LetterRemover
 
 	public LetterRemover()
 	{
-		//call set
+		setRemover("", 'a');
 	}
 
-	//add in second constructor
+	public LetterRemover(String s, char rem) {
+		setRemover(s, rem);
+	}
 	
 	
 	public void setRemover(String s, char rem)

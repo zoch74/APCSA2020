@@ -16,8 +16,7 @@ public class StringEquality
 
 	public StringEquality()
 	{
-		wordOne = "";
-		wordTwo = "";
+		setWords("", "");
 		same = false;
 	}
 

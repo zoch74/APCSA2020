@@ -16,8 +16,7 @@ public class WordsCompare
 
 	public WordsCompare()
 	{
-		wordOne = "";
-		wordTwo = "";
+		setWords("", "");
 		compare = 0;
 	}
 
