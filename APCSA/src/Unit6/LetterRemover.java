@@ -28,22 +28,21 @@ public class LetterRemover
 
 	public String removeLetters()
 	{
-		
-		int loc = sentence.indexOf(lookFor);
-		
+		String cleaned = sentence;
+		int loc = cleaned.indexOf(lookFor);
+
 		while (loc != -1) {
-			String start = sentence.substring(0,loc);
-			String end = sentence.substring(loc +1);
-			sentence = start + end;
-			loc = sentence.indexOf(lookFor);
+			String start = cleaned.substring(0,loc);
+			String end = cleaned.substring(loc +1);
+			cleaned = start + end;
+			loc = cleaned.indexOf(lookFor);
 		}
 		
-		String cleaned = sentence;
 		return cleaned;
 	}
 
 	public String toString()
 	{
-		return sentence + " - letter to remove " + lookFor;
+		return removeLetters() + " - letter to remove " + lookFor;
 	}
 }

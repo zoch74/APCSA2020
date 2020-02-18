@@ -11,34 +11,44 @@ public class Word
 
 	public Word()
 	{
+		word = "";
 	}
 
 	public Word(String s)
 	{
+		setString(s);
 	}
 
 	public void setString(String s)
 	{
+		word = s;
 	}
 
 	public char getFirstChar()
 	{
-		return 0;
+		return word.charAt(0);
 	}
 
 	public char getLastChar()
 	{
-		return 0;
+		return word.charAt(word.length()-1);
 	}
 
 	public String getBackWards()
 	{
 		String back="";
+		int i = word.length()-1;
+		while (i >=0) {
+			back = back + word.charAt(i);
+			i--;
+		}
+		
 		return back;
 	}
 
  	public String toString()
  	{
- 		return "";
+ 		return (getFirstChar() + "") + "\n" + (getLastChar() + "") + "\n" + getBackWards() + "\n" + word + "\n";
+ 		
 	}
 }
