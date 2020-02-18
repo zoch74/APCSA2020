@@ -3,7 +3,7 @@ package Unit6;
 //www.apluscompsci.com
 //Name -
 
-import static java.lang.System.*;
+//import static java.lang.System.*;
 
 public class LetterRemover
 {
@@ -12,7 +12,7 @@ public class LetterRemover
 
 	public LetterRemover()
 	{
-		setRemover("", 'a');
+		setRemover("", ' ');
 	}
 
 	public LetterRemover(String s, char rem) {
@@ -28,7 +28,17 @@ public class LetterRemover
 
 	public String removeLetters()
 	{
-		String cleaned=sentence;
+		
+		int loc = sentence.indexOf(lookFor);
+		
+		while (loc != -1) {
+			String start = sentence.substring(0,loc);
+			String end = sentence.substring(loc +1);
+			sentence = start + end;
+			loc = sentence.indexOf(lookFor);
+		}
+		
+		String cleaned = sentence;
 		return cleaned;
 	}
 
