@@ -3,7 +3,7 @@ package Unit6;
 //www.apluscompsci.com
 //Name
 
-import static java.lang.System.*;
+//import static java.lang.System.*;
 
 public class TriangleOne
 {
