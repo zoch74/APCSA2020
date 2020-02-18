@@ -21,7 +21,7 @@ public class TriangleOneRunner
 		TriangleOne test4 = new TriangleOne("a");
 		test4.print();
 		
-		TriangleOne test5 = new TriangleOne("chicked");
+		TriangleOne test5 = new TriangleOne("chicken");
 		test5.print();
 	}
 }
