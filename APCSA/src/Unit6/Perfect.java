@@ -3,21 +3,50 @@ package Unit6;
 //www.apluscompsci.com
 //Name -
 
-import static java.lang.System.*;
+//import static java.lang.System.*;
 
 public class Perfect
 {
    private int number;
 
-	//add constructors
-
-	//add a set method
-
+   public Perfect() {
+	   number = 0;
+   }
+   public Perfect(int n) {
+	   setNum(n);
+   }
+   public void setNum(int n) {
+	   number = n;
+   }
 	public boolean isPerfect()
 	{
-		return false;
+		//boolean perf = false;
+		int div = 1;
+		int sum = 0;
+		do {
+			if (number % div == 0) {
+				sum = sum + div;
+			}
+			div++;
+			
+		} while (div < number);
+		
+		if (sum == number) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
-	//add a toString	
+	public String toString() {
+		
+		if (isPerfect() == true) {
+			return number + " is perfect.";
+		}
+		else {
+			return number + " is not perfect.";
+		}
+	}
 	
 }
