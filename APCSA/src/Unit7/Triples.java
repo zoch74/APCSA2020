@@ -48,15 +48,16 @@ public class Triples
 		while (i <= number) {
 			a_temp = number;
 			
-			if (a_temp % 2 == 1) {
-				b_temp = a_temp +1;
+			b_temp = a_temp +1;
 				
-				while (Math.sqrt(Math.pow(a_temp, 2) + Math.pow(b_temp, 2)) % 2 != 1) {
-					b_temp = b_temp + 2;
-				}
-				
-				
+			while (Math.sqrt(Math.pow(a_temp, 2) + Math.pow(b_temp, 2)) % 2 != 1) {
+				b_temp = b_temp + 2;
 			}
+			
+			c_temp = (int) Math.sqrt(Math.pow(a_temp, 2) + Math.pow(b_temp, 2));
+				
+				
+			
 		}
 
 
