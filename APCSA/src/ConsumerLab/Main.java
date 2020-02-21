@@ -24,10 +24,12 @@ class Main {
 		System.out.println("Review = " + val);
 		
 		double review = Review.totalSentiment("src/ConsumerLab/simpleReview.txt");
-		System.out.println("Total review = " + review);
+		//System.out.println("Total review = " + review);
+		System.out.printf("Total review : %.2f\n", review);
 		
 		double review1 = Review.totalSentiment("src/ConsumerLab/26WestReview.txt");
-		System.out.println("Total review = " + review1);
+		//System.out.println("Total review = " + System.out.printf("%.2f\n", review1));
+		System.out.printf("Total review : %.2f\n", review1);
 		
 		int star = Review.starRating("src/ConsumerLab/simpleReview.txt");
 		System.out.println("star rating = " + star);
@@ -35,8 +37,11 @@ class Main {
 		int star1 = Review.starRating("src/ConsumerLab/26WestReview.txt");
 		System.out.println("star rating = " + star1);
 		
-		String fakeReview = Review.fakeReview("src/ConsumerLab/fakeReview.txt");
+		String fakeReview = Review.fakeReview("src/ConsumerLab/fakeReview.txt", -1);
 		System.out.println(fakeReview);
+		
+		String fakeReview1 = Review.fakeReview("src/ConsumerLab/fakeReview.txt", 1);
+		System.out.println(fakeReview1);
 		
 		
   }

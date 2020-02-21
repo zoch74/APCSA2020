@@ -163,8 +163,8 @@ public class Review {
     // loop through the file contents 
 	  
 	  int loc = file.indexOf(" ");
-	  String test = "";
-	  int num = 0;
+	  //String test = "";
+	  //int num = 0;
 	  String file_saved = "";
 	  String word = "";
 	  
@@ -181,19 +181,19 @@ public class Review {
 		  }
 	
 		  sentimentTotal = sentimentTotal + sentimentVal(word);
-		  test = test + word + ":" + sentimentVal(word) + " ";
+		  //test = test + word + ":" + sentimentVal(word) + " ";
 		  file_saved = file;
 		  file = file.substring(loc+1);
 		  loc = file.indexOf(" ");
-		  num++;
+		  //num++;
 	  } while (!(file_saved.equals(file)));
 	  
        // find each word
        // add in its sentimentVal
        // set the file contents to start after this word
    
-	  System.out.println(test);
-	  System.out.println("Number of words found = " + num);
+	  //System.out.println(test);
+	 // System.out.println("Number of words found = " + num);
 	  return sentimentTotal; 
 	  
   }
@@ -226,7 +226,8 @@ public class Review {
     return stars; 
   }
   
-  public static String fakeReview(String filename) {
+  // if the type input = 1, then the review is positive. if the type is -1, then the review is negative.
+  public static String fakeReview(String filename, int type) {
 	  String review = textToString(filename);
 	  String finalReview = "";
 	  
@@ -242,8 +243,12 @@ public class Review {
 			middle = review.substring(locStar + 1);
 			locSpace = middle.indexOf(" ");
 			end = middle.substring(locSpace +1);
-			finalReview = start + randomAdjective() + " " + end;
-		  
+			if (type ==1) {
+				finalReview = start + randomPositiveAdj() + " " + end;
+			}
+			else if (type == -1) {
+				finalReview = start + randomNegativeAdj() + " " + end;
+			}
 		  
 			review = finalReview;
 			locStar = review.indexOf("*");
