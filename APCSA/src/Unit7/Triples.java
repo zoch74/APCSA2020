@@ -11,12 +11,12 @@ public class Triples
 
 	public Triples()
 	{
-		this(0);
+		setNum(0);
 	}
 
 	public Triples(int num)
 	{
-		num = 1;
+		setNum(num);
 	}
 
 	public void setNum(int num)
@@ -44,19 +44,32 @@ public class Triples
 		String output="";
 		int a, b, c, a_temp, b_temp, c_temp;
 		int i = 1;
-		
+		/*
 		while (i <= number) {
-			a_temp = number;
+			a_temp = i;
 			
 			b_temp = a_temp +1;
 				
-			while (Math.sqrt(Math.pow(a_temp, 2) + Math.pow(b_temp, 2)) % 2 != 1) {
+			while (b_temp < number && Math.sqrt(Math.pow(a_temp, 2) + Math.pow(b_temp, 2)) % 2 != 1) {
 				b_temp = b_temp + 2;
 			}
+			if ()
 			
 			c_temp = (int) Math.sqrt(Math.pow(a_temp, 2) + Math.pow(b_temp, 2));
 				
 				
+			
+			
+		}*/
+		
+		for (int j = 1; j <= number; j++) {
+			a_temp = j;
+			for (int k = 2; k <= number; k=k+2) {
+				b_temp = j;
+				c_temp = (int) Math.sqrt(Math.pow(a_temp, 2) + Math.pow(b_temp, 2));
+				
+				if ()
+			}
 			
 		}
 
