@@ -16,12 +16,18 @@ public class RPSRunner
 		//add in a do while loop after you get the basics up and running
 		
 			String player = "";
-		
-			out.print("type in your prompt [R,P,S] :: ");
+			do {
+				out.print("Rock-Paper_Scissors - pick your weapon [R,P,S] :: ");
+				player = keyboard.nextLine();
+				RockPaperScissors round = new RockPaperScissors(player);
+				System.out.println(round.toString());
+				
+				out.print("\nDo you want to play again? ");
+				response = keyboard.nextLine().toLowerCase().charAt(0);
+				
+				
+			} while (response != 'n');
 			
-			//read in the player value
-		
-			RockPaperScissors game = new RockPaperScissors();		
 	}
 }
 
