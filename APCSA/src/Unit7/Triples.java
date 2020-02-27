@@ -25,7 +25,7 @@ public class Triples
 
 	}
 	
-	private int greatestCommonFactor(int a, int b, int c)
+	private int greatestCommonFactor(double a, double b, double c)
 	{
 		int max = 1;
 		int count = 1;
@@ -38,46 +38,37 @@ public class Triples
 
 		return max;
 	}
-
-	public String toString()
-	{
-		String output="";
-		int a, b, c, a_temp, b_temp, c_temp;
-		int i = 1;
-		/*
-		while (i <= number) {
-			a_temp = i;
-			
-			b_temp = a_temp +1;
-				
-			while (b_temp < number && Math.sqrt(Math.pow(a_temp, 2) + Math.pow(b_temp, 2)) % 2 != 1) {
-				b_temp = b_temp + 2;
-			}
-			if ()
-			
-			c_temp = (int) Math.sqrt(Math.pow(a_temp, 2) + Math.pow(b_temp, 2));
-				
-				
-			
-			
-		}*/
+	public String toString() {
 		
-		for (int j = 1; j <= number; j++) {
-			a_temp = j;
-			for (int k = 2; k <= number; k=k+2) {
-				b_temp = j;
-				c_temp = (int) Math.sqrt(Math.pow(a_temp, 2) + Math.pow(b_temp, 2));
-				
-				if ()
+		int aTemp, bTemp, cTemp;
+		double aSquare, bSquare; 
+		String output = "";
+		
+		for (int n = 1; n < number; n++) {
+			aTemp = n;
+			for (int m = n+1; m < number; m=m+2) {
+				bTemp = m;
+				aSquare = Math.pow(aTemp, 2);
+				bSquare = Math.pow(bTemp, 2);
+				cTemp = (int)Math.sqrt(aSquare + bSquare);
+				if (Math.sqrt(aSquare + bSquare) == Math.round(Math.sqrt(aSquare + bSquare))) {
+					if (greatestCommonFactor(aTemp, bTemp, cTemp) == 1) {
+						if (cTemp % 2 == 1) {
+							if (aTemp < number && bTemp < number && cTemp < number) {
+								output = output + aTemp + " " + bTemp + " " + cTemp + "\n";
+							}
+						}
+					}
+				}
 			}
-			
 		}
-
-
-
-
-
-
-		return output+"\n";
+		
+		
+		
+		
+		
+		
+		
+		return output;
 	}
 }
