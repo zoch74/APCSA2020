@@ -25,7 +25,7 @@ public class Triples
 
 	}
 	
-	private int greatestCommonFactor(double a, double b, double c)
+	private int greatestCommonFactor(int a, int b, int c)
 	{
 		int max = 1;
 		int count = 1;
