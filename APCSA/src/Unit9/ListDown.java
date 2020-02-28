@@ -13,6 +13,15 @@ public class ListDown
 	//are in decreasing order [31,12,6,2,1]
 	public static boolean go(List<Integer> numArray)
 	{
-		return true;
+		boolean dec = true;
+		for (int i = 0; i < numArray.size(); i++) {
+			if (i < numArray.size()-1) {
+				if (numArray.get(i) <= numArray.get(i+1)) {
+					dec = false;
+				}
+			}
+			
+		}
+		return dec;
 	}	
 }
