@@ -14,11 +14,11 @@ public class BlackJackCard extends Card
   	//accessors
 	public int getValue()
 	{
-		if( getFace() == 1 )
+		if( getIndex() == 1 )
 			return 11;
-		if( getFace() >= 10 )
+		if( getIndex() >= 10 )
 			return 10;
-		return getFace();
+		return getIndex();
 	}
 
   	//toString

@@ -8,7 +8,7 @@ public class Card
 	//name of card
 	public static final String FACES[] = {"ZERO","ACE","TWO","THREE","FOUR",
 			"FIVE","SIX","SEVEN","EIGHT","NINE","TEN","JACK","QUEEN","KING"};
-	private String name;
+	private String rank;
 
 	//instance variables
 		//String suit
@@ -29,45 +29,56 @@ public class Card
   	//constructors
 	public Card() {
 		setSuit("");
-		setFace(0);
+		setRank("");
+		setPoint(0);
 	}
-	public Card(String s, int n) {
+	public Card(String r, String s, int v) {
 		setSuit(s);
-		setFace(n);
+		setRank(r);
+		setPoint(v);
 	}
-
-	// modifiers
-		//set methods
+// modifiers
+	private void setPoint(int v) {
+		val = v;
+		
+	}
 	public void setSuit(String s) {
 		suit = s.toUpperCase();
 	}
 	
-	public void setFace(int n) {
-		cardIndex = n;
-		name = FACES[n];
-		val = cardVal[n];
+	public void setRank(String s) {
+		rank = s.toUpperCase();
 	}
 
   	//accessors
 		//get methods
-	public String getSuit() {
+	public String suit() {
 		return suit;
 	}
-	public String getFace() {
+	public String rank() {
 		
-		return name;
+		return rank;
 	}
-	public int getVal() {
+	public int pointValue() {
 		return val;
 	}
-	public int getIndex() {
-		return cardIndex;
+	
+	public boolean matches(Card otherCard) {
+		if (otherCard.suit().equals(this.suit()) && otherCard.rank().equals(this.rank()) && otherCard.pointValue() == this.pointValue()) {
+			return true;
+		}
+		else {
+			return false;	
+		}
+		
 	}
 
 
   	//toString
 	public String toString() {
-		return getFace() + " of " + getSuit();
+		return rank() + " of " + suit() + " (point value = " + val + ")";
 	}
+	
+	
 
  }
