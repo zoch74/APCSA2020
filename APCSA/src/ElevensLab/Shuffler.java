@@ -1,4 +1,8 @@
 package ElevensLab;
+
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -19,7 +23,7 @@ public class Shuffler {
 	 * Tests shuffling methods.
 	 * @param args is not used.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive perfect shuffles:");
 		int[] values1 = new int[VALUE_COUNT];
@@ -51,7 +55,7 @@ public class Shuffler {
 			System.out.println();
 		}
 		System.out.println();
-	}
+	}*/
 
 
 	/**
@@ -60,8 +64,34 @@ public class Shuffler {
 	 * the cards in one half with the cards in the other.
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
-	public static void perfectShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+	public static void perfectShuffle(ArrayList<Card> values) {
+		
+		List<Card> newDeck = new ArrayList<Card>();
+		int mid;
+		
+		
+		if (values.size() > 0) {
+			if (values.size() % 2 == 0) {
+				mid = (values.size()/2);
+				for (int i = 0; i < mid; i++) {
+					newDeck.add(values.get(i));
+					newDeck.add(values.get(i + mid));
+				} 	
+			}
+			else {
+				mid = (values.size()/2) + 1;
+				for (int i = 0; i < mid-1; i++) {
+					newDeck.add(values.get(i));
+					newDeck.add(values.get(i + mid));
+				} 
+				newDeck.add(values.get(mid));
+			}
+			
+		}
+		for (int i = 0; i < values.size(); i++) {
+			values.set(i, newDeck.get(i));
+		}
+		
 	}
 
 	/**
@@ -75,8 +105,27 @@ public class Shuffler {
 	 * searching for an as-yet-unselected card.
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
-	public static void selectionShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+	public static void selectionShuffle(ArrayList<Card> values) {
+		List<Card> temp = new ArrayList<Card>();
+		for (int i = 0; i < cards.size(); i++) {
+			temp.add(cards.get(i));
+		}
+		List<Card> shuffle = new ArrayList<Card>();
+		
+		Random rand = new Random();
+		int tempRand = 0;
+		for (int i = values.size()-1; i > 0; i--) {
+			tempRand = rand.nextInt(52-i);
+			shuffle.add(temp.get(tempRand));
+			temp.remove(tempRand);
+			
+		}
+		shuffle.add(temp.get(0));
+		
+		resetTop();
+		for (int i = 0; i <52; i++) {
+			cards.set(i, shuffle.get(i));
+		}
 		
 	}
 }
