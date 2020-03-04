@@ -35,7 +35,7 @@ public class Deck{
 		}
 		
 		resetTop();
-		//shuffle();
+		shuffle();
 	}
 	public Deck(String[] ranks, String[] suits, int[] vals) {
 		cards = new ArrayList<Card>();
@@ -48,7 +48,7 @@ public class Deck{
 		}
 		
 		resetTop();	
-		//shuffle();
+		shuffle();
 	}
 	
 	public Card deal() {
@@ -57,21 +57,21 @@ public class Deck{
 			return null;
 		}
 		else {
-			int tempTop = top;
+			Card tempTop = cards.get(top);
 			top--;
-			return cards.get(tempTop);
+			return tempTop;
 		}	
 	}
 	
 	public boolean isEmpty() {
-		return top==0;
+		return size()==0;
 	}
 	public int size() {
-		return top;
+		return top+1;
 	}
 	public void resetTop() {
 		size = cards.size();
-		top = size -1;
+		top = size-1;
 	}
 	
 	public String toString() {
@@ -85,28 +85,14 @@ public class Deck{
 	
    //make a dealCard() method that returns the top card
    
-	/*public void shuffle() {
-		List<Card> temp = new ArrayList<Card>();
-		for (int i = 0; i < cards.size(); i++) {
-			temp.add(cards.get(i));
-		}
-		List<Card> shuffle = new ArrayList<Card>();
+	public void shuffle() {
 		
-		Random rand = new Random();
-		int tempRand = 0;
-		for (int i = 1; i < 52; i++) {
-			tempRand = rand.nextInt(52-i);
-			shuffle.add(temp.get(tempRand));
-			temp.remove(tempRand);
-			
+		for (int i = 1; i <4; i++) {
+			Shuffler.selectionShuffle(cards);
 		}
-		shuffle.add(temp.get(0));
 		
 		resetTop();
-		for (int i = 0; i <52; i++) {
-			cards.set(i, shuffle.get(i));
-		}
-	}*/
+	}
 	
 	
    //write a shuffle() method

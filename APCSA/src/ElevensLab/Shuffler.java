@@ -1,6 +1,7 @@
 package ElevensLab;
 
 import java.util.List;
+import java.util.Random;
 import java.util.ArrayList;
 
 /**
@@ -64,7 +65,7 @@ public class Shuffler {
 	 * the cards in one half with the cards in the other.
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
-	public static void perfectShuffle(ArrayList<Card> values) {
+	public static List<Card> perfectShuffle(List<Card> values) {
 		
 		List<Card> newDeck = new ArrayList<Card>();
 		int mid;
@@ -88,9 +89,12 @@ public class Shuffler {
 			}
 			
 		}
+		
+		
 		for (int i = 0; i < values.size(); i++) {
 			values.set(i, newDeck.get(i));
 		}
+		return values;
 		
 	}
 
@@ -105,27 +109,26 @@ public class Shuffler {
 	 * searching for an as-yet-unselected card.
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
-	public static void selectionShuffle(ArrayList<Card> values) {
-		List<Card> temp = new ArrayList<Card>();
+	public static List<Card> selectionShuffle(List<Card> values) {
+		/*List<Card> temp = new ArrayList<Card>();
 		for (int i = 0; i < cards.size(); i++) {
 			temp.add(cards.get(i));
 		}
 		List<Card> shuffle = new ArrayList<Card>();
-		
+		*/
 		Random rand = new Random();
+		
 		int tempRand = 0;
+		Card tempCard;
 		for (int i = values.size()-1; i > 0; i--) {
-			tempRand = rand.nextInt(52-i);
-			shuffle.add(temp.get(tempRand));
-			temp.remove(tempRand);
+			tempRand = rand.nextInt(i);
+			tempCard = values.get(tempRand);
+			values.set(tempRand, values.get(i));
+			values.set(i, tempCard);
 			
 		}
-		shuffle.add(temp.get(0));
 		
-		resetTop();
-		for (int i = 0; i <52; i++) {
-			cards.set(i, shuffle.get(i));
-		}
+		return values;
 		
 	}
 }
