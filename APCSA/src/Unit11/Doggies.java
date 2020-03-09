@@ -36,6 +36,10 @@ public class Doggies
 			}
 
 		}
+		if (pups[oldInd].getAge() < pups[pups.length-1].getAge()) {
+			oldInd = pups.length-1;
+		}
+		
 		return pups[oldInd].getName();
 	}
 
@@ -49,6 +53,9 @@ public class Doggies
 				}
 			}
 
+		}
+		if (pups[youngInd].getAge() > pups[pups.length-1].getAge()) {
+			youngInd = pups.length-1;
 		}
 		return pups[youngInd].getName();
 	}
