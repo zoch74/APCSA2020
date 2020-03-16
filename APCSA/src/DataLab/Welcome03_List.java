@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Welcome03_List {
    public static void main(String[] args) {
       DataSource ds = DataSource.connect("http://weather.gov/xml/current_obs/index.xml").load();
-      ArrayList<WeatherStation> allstns = ds.fetchList("WeatherStation", "station/station_name", 
+      ArrayList<WeatherStation> allstns = ds.fetchList(WeatherStation.class, "station/station_name", 
              "station/station_id", "station/state",
              "station/latitude", "station/longitude");
       System.out.println("Total stations: " + allstns.size());
@@ -21,8 +21,22 @@ public class Welcome03_List {
       System.out.println("Stations in " + state);
       for (WeatherStation ws : allstns) {
          if (ws.isLocatedInState(state)) {
-            System.out.println("  " + ws.getId() + ": " + ws.getName());
+            System.out.println("  " + ws.getId() + ": " + ws.getName() + " : " + ws.getLat());
          }
       }
+      
+      //System.out.println("Enter a latitude: ");
+      //double lat = sc.nextDouble();
+      //System.out.println("Stations at " + lat + "˚");
+      double lat = 0;
+      WeatherStation sStation = new WeatherStation(null, null, null, 0, 0);
+      for (WeatherStation ws : allstns) {
+          if (ws.getLat() < lat) {
+        	  lat = ws.getLat();
+        	  System.out.println(lat);
+        	  sStation = ws;
+          }
+       }
+      System.out.println("  The southernmost station is " + sStation.getId() + ": " + sStation.getName());
    }
 }
