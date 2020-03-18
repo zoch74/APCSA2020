@@ -54,9 +54,17 @@ public class CelebrityGame
 	 */
 	public boolean processGuess(String guess)
 	{
-		
-		
-		return guess.equals(gameCelebrity);
+		if (guess.trim().equalsIgnoreCase(gameCelebrity.getAnswer())) {
+			celebGameList.remove(0);
+			if (getCelebrityGameSize() > 0) {
+				gameCelebrity = celebGameList.get(0);
+			}
+			else {
+				gameCelebrity = new Celebrity("", "");
+			}
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -66,7 +74,11 @@ public class CelebrityGame
 	 */
 	public void play()
 	{
-		
+		if (celebGameList != null && celebGameList.size() > 0)
+		{
+			this.gameCelebrity = celebGameList.get(0);
+			gameWindow.replaceScreen("GAME");
+		}
 	}
 
 	/**
@@ -81,6 +93,20 @@ public class CelebrityGame
 	 */
 	public void addCelebrity(String name, String guess, String type)
 	{
+		Celebrity currentCelebrity;
+		if (type.equals("Literature"))
+		{
+			currentCelebrity = new LiteratureCelebrity(name, guess);
+		}
+		else if(type.equals("Athlete")) {
+			currentCelebrity = new AthleteCelebrity(name, guess);
+		}
+		else //Add an else if here
+		{
+			currentCelebrity = new Celebrity(name, guess);
+		}
+		this.celebGameList.add(currentCelebrity);
+		
 		
 	}
 
@@ -105,7 +131,29 @@ public class CelebrityGame
 	 */
 	public boolean validateClue(String clue, String type)
 	{
-		return false;
+		boolean validClue = false;
+		
+		if (clue.trim().length() >= 10)
+		{
+			validClue = true;
+			if (type.equalsIgnoreCase("literature"))
+			{
+				String[] temp = clue.split(",");
+			
+				if (temp.length <= 1)
+				{
+					validClue = false;
+				}
+			}
+			else if (type.equalsIgnoreCase("athlete")) {
+				if (clue.trim().length() < 15)
+				{
+					validClue = false;
+				}
+			}
+		
+		}
+		return validClue;
 	}
 
 	/**
@@ -115,7 +163,7 @@ public class CelebrityGame
 	 */
 	public int getCelebrityGameSize()
 	{
-		return 0;
+		return celebGameList.size();
 	}
 
 	/**
@@ -126,7 +174,7 @@ public class CelebrityGame
 	 */
 	public String sendClue()
 	{
-		return null;
+		return gameCelebrity.getClue();
 	}
 
 	/**
@@ -137,6 +185,6 @@ public class CelebrityGame
 	 */
 	public String sendAnswer()
 	{
-		return null;
+		return gameCelebrity.getAnswer();
 	}
 }

@@ -241,7 +241,7 @@ public class CelebrityPanel extends JPanel
 	private void timerFires()
 	{
 		seconds--;
-		
+
 		if (seconds <= 10)
 		{
 			dynamicTimerLabel.setFont(new Font("Helvetica", Font.BOLD,20));
