@@ -43,6 +43,22 @@ public class NumberSorter
 			redNum = redNum % ((int)Math.pow(mult, (size -i)));
 		}
 		
+		for (int j = 0; j < sorted.length - 1; j++)
+	      {
+	         int minInd = j;
+	         for (int k = j + 1; k < sorted.length; k++)
+	         {
+	            if (sorted[k] < sorted[minInd])
+	            {
+	               minInd = k;
+	            }
+	         }
+	         int temp = sorted[j];
+	         sorted[j] = sorted[minInd];
+	         sorted[minInd] = temp;
+	       }
+		/*
+		
 		int temp = 0;
 		for (int i =0; i<size; i++) {
 			do {
@@ -61,7 +77,7 @@ public class NumberSorter
 				sorted[i] = temp;
 			}
 		}
-		
+		*/
 		
 		
 		return sorted;
