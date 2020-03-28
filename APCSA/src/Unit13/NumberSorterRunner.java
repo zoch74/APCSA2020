@@ -10,6 +10,8 @@ public class NumberSorterRunner
 {
 	public static void main(String args[])
 	{
+		//System.out.println(NumberSorter.getNumDigits(52412345));
+		
 		int[] cases = {567891, 901912468, 864213507, 898777, 234422};
 		for( int test : cases )
 		{
