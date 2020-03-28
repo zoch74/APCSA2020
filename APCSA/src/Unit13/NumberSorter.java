@@ -44,7 +44,12 @@ public class NumberSorter
 		}
 		
 		int temp = 0;
-		for (int i =1; i<size-1; i++) {
+		for (int i =0; i<size; i++) {
+			do {
+				
+			}
+			
+			
 			if(sorted[i]>sorted[i+1]) {
 				temp = sorted[i];
 				sorted[i] = sorted[i+1];
