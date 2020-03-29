@@ -12,6 +12,13 @@ public class WordSearch
 
     public WordSearch( int size, String str )
     {
+    	m = new String[size][size];
+    	int i = 0;
+    	for(int r = 0; r < size; r++) {
+    		for(int c = 0; c < size; c++) {
+    			m[r][c] = str.substring(i++, i);
+    		}
+    	}
     }
 
     public boolean isFound( String word )
@@ -21,7 +28,27 @@ public class WordSearch
 
 	public boolean checkRight(String w, int r, int c)
    {
-		return false;
+		boolean found = false;
+		int len = w.length();
+		boolean match = true;
+		int i = 0;
+		while (match == true && c < m.length) {
+			if (w.substring(i,i+1).equals(m[r][c])) {
+				match = true;
+				if(i == len-1) {
+					
+				}
+			}
+			else {
+				match = false;
+			}
+			i++;
+			
+		}
+		
+		
+		
+		return found;
 	}
 
 	public boolean checkLeft(String w, int r, int c)
