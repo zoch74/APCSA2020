@@ -23,7 +23,16 @@ public class WordSearch
 
     public boolean isFound( String word )
     {
-    	return false;
+    	boolean found = false;
+    	int length = m.length;
+    	for (int r = 0; !found && r < length; r++) {
+    		for (int c = 0; !found && c < length; c++) {
+    			if (word.substring(0,1).contentEquals(m[r][c])) {
+    				found = checkRight(word, r, c) || checkLeft(word, r, c) || checkUp(word, r, c) || checkDown(word, r, c) || checkDiagUpRight(word, r, c) || checkDiagUpLeft(word, r, c) || checkDiagDownRight(word, r, c) || checkDiagDownLeft(word, r, c);
+    			}
+    		}
+    	}
+    	return found;
     }
 
 	public boolean checkRight(String w, int r, int c)
@@ -105,7 +114,27 @@ public class WordSearch
 
 	public boolean checkDown(String w, int r, int c)
    {
-	   return false;
+		boolean found = false;
+		int len = w.length();
+		boolean match = true;
+		int i = 0; //index of character within word
+		while (match == true && c+i < m.length) {
+			if (w.substring(i,i+1).equals(m[r][c])) {
+				match = true;
+				if(i == len-1) {
+					found = true;
+				}
+			}
+			else {
+				match = false;
+			}
+			i++;
+			r++;
+			
+		}
+		
+		
+		return found;
 	}
 
 	public boolean checkDiagUpRight(String w, int r, int c)
@@ -130,6 +159,6 @@ public class WordSearch
 
     public String toString()
     {
- 		return "";
+ 		return Arrays.toString(m) + "";
     }
 }
