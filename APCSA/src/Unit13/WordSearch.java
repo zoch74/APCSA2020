@@ -139,22 +139,106 @@ public class WordSearch
 
 	public boolean checkDiagUpRight(String w, int r, int c)
 	{
-		return false;
+		boolean found = false;
+		int len = w.length();
+		boolean match = true;
+		int i = 0; //index of character within word
+		while (match == true && c+i < m.length) {
+			if (w.substring(i,i+1).equals(m[r][c])) {
+				match = true;
+				if(i == len-1) {
+					found = true;
+				}
+			}
+			else {
+				match = false;
+			}
+			i++;
+			r++;
+			c--;
+			
+		}
+		
+		
+		return found;
 	}
 
 	public boolean checkDiagUpLeft(String w, int r, int c)
 	{
-		return false;
+		boolean found = false;
+		int len = w.length();
+		boolean match = true;
+		int i = 0; //index of character within word
+		while (match == true && c+i < m.length) {
+			if (w.substring(i,i+1).equals(m[r][c])) {
+				match = true;
+				if(i == len-1) {
+					found = true;
+				}
+			}
+			else {
+				match = false;
+			}
+			i++;
+			r--;
+			c--;
+			
+		}
+		
+		
+		return found;
 	}
 
 	public boolean checkDiagDownLeft(String w, int r, int c)
    {
-		return false;
+		boolean found = false;
+		int len = w.length();
+		boolean match = true;
+		int i = 0; //index of character within word
+		while (match == true && c+i < m.length) {
+			if (w.substring(i,i+1).equals(m[r][c])) {
+				match = true;
+				if(i == len-1) {
+					found = true;
+				}
+			}
+			else {
+				match = false;
+			}
+			i++;
+			r--;
+			c++;
+			
+		}
+		
+		
+		return found;
 	}
 
 	public boolean checkDiagDownRight(String w, int r, int c)
 	{
-		return false;
+		boolean found = false;
+		int len = w.length();
+		boolean match = true;
+		int i = 0; //index of character within word
+		while (match == true && c+i < m.length) {
+			if (w.substring(i,i+1).equals(m[r][c])) {
+				match = true;
+				if(i == len-1) {
+					found = true;
+				}
+			}
+			else {
+				match = false;
+			}
+			i++;
+			r++;
+			c++;
+			
+		}
+		
+		
+		return found;
 	}
 
     public String toString()
