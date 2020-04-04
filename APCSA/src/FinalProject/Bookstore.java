@@ -71,6 +71,66 @@ public class Bookstore {
 		
 	}
 	
+	public Author mostBooks() {
+		int maxNum = authors[0].getBooks().length;
+		int maxInd = 0;
+		
+		for(int i = 1; i < authors.length; i++) {
+			if (authors[i].getBooks().length > maxNum) {
+				maxInd = i;
+				maxNum = authors[i].getBooks().length;
+			}
+		}
+		
+		return authors[maxInd];
+	}
+	
+	public Author leastBooks() {
+		int lessNum = authors[0].getBooks().length;
+		int lessInd = 0;
+		
+		for(int i = 1; i < authors.length; i++) {
+			if (authors[i].getBooks().length < lessNum) {
+				lessInd = i;
+				lessNum = authors[i].getBooks().length;
+			}
+		}
+		
+		return authors[lessInd];
+	}
+	
+	public String searchAuth(String name) {
+		sortAuth();
+		int left = 0;
+		int mid = 0;
+	    int right = authors.length - 1;
+	    while (left < right)
+	    {
+		     int middle = (left + right) / 2;
+		     //System.out.println("left = " + left);
+		    // System.out.println("right = " + right);
+		     //System.out.println("middle = " + middle);
+		     
+		     mid = middle;
+		     if (right == left) {
+		    	 //System.out.println(middle);
+		    	 return authors[middle].toString();
+		     }
+		     else if (name.compareTo(authors[middle].getAuthName()) < 0)
+		     {
+	            right = middle - 1;
+	            //System.out.println(right);
+	            //System.out.println("Lesser than");
+	         }
+	         else if (name.compareTo(authors[middle].getAuthName()) > 0)
+	         {
+	            left = middle + 1;
+	            
+	         }
+	         
+	      }
+	      return authors[mid].toString();
+	}
 	
 	
 	public String toString() {
