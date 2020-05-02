@@ -4,6 +4,7 @@ package PongLab;
 //Name -
 
 import java.awt.Color;
+import java.lang.Math.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Canvas;
@@ -26,9 +27,12 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	public Pong()
 	{
 		//set up all variables related to the game
-
-
-
+		
+		ball = new Ball();
+		
+		leftPaddle = new Paddle(10, 10);
+		
+		rightPaddle = new Paddle(500, 10);
 
 		keys = new boolean[4];
 
@@ -67,41 +71,67 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		//see if ball hits left wall or right wall
 		if(!(ball.getX()>=10 && ball.getX()<=780))
 		{
-			ball.setXSpeed(0);
-			ball.setYSpeed(0);
+			ball.setxSpeed(0);
+			ball.setySpeed(0);
 		}
 
 		
 		//see if the ball hits the top or bottom wall 
-
-
+		if(!(ball.getY()>=10 && ball.getY()<=550))
+		{
+			ball.setySpeed(-ball.getySpeed());
+		}
+		
+		/*
+		if(!(leftPaddle.getY()>=10 && leftPaddle.getY()<=780))
+		{
+			leftPaddle.setSpeed(leftPaddle.getSpeed()-);
+		}*/
 
 
 		//see if the ball hits the left paddle
+		if (ball.getX() <= (leftPaddle.getX() + leftPaddle.getWidth() + Math.abs(ball.getxSpeed())) && (ball.getY() >= leftPaddle.getY() && ball.getY() <= leftPaddle.get)
 		
 		
 		
 		//see if the ball hits the right paddle
 		
-		
-		
 
+		ball.moveAndDraw(window);
+		leftPaddle.draw(window);
+		rightPaddle.draw(window);
+
+		if(!(ball.getX()>=10 && ball.getX()<=550))
+		{
+			ball.setxSpeed(-ball.getxSpeed());
+		}
+
+		if(!(ball.getY()>=10 && ball.getY()<=450))
+		{
+			ball.setySpeed(-ball.getySpeed());
+		}
 
 		//see if the paddles need to be moved
+		if(keys[0] == true)
+		{
+			//move left paddle up and draw it on the window
+			leftPaddle.moveUpAndDraw(window);
+		}
+		if(keys[1] == true)
+		{
+			//move left paddle down and draw it on the window
+			leftPaddle.moveDownAndDraw(window);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+		}
+		if(keys[2] == true)
+		{
+			rightPaddle.moveUpAndDraw(window);
+		}
+		if(keys[3] == true)
+		{
+			rightPaddle.moveDownAndDraw(window);
+		}
 
 		
 		twoDGraph.drawImage(back, null, 0, 0);
