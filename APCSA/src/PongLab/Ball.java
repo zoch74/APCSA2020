@@ -6,7 +6,7 @@ package PongLab;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Ball extends Block
+public class Ball extends Block implements Collidable
 {
 	private int xSpeed;
 	private int ySpeed;
@@ -36,6 +36,12 @@ public class Ball extends Block
 		super(x, y, w, h, c);
 		xSpeed = 4;
 		ySpeed = 2;
+	}
+	
+	public Ball(int x, int y, int w, int h, int xSpd, int ySpd) {
+		super(x, y, w, h);
+		xSpeed = xSpd;
+		ySpeed = ySpd;
 	}
 	
 	public Ball(int x, int y, int w, int h, Color c, int xSpd, int ySpd) {
@@ -85,7 +91,31 @@ public void moveAndDraw(Graphics window)
 			return false;
 		}
 	}   
-
+	
+	@Override
+	public boolean didCollideLeft(Object obj) {
+		
+		//System.out.println(getX() <= ((Block)obj).getX() + ((Block)obj).getWidth());
+		return (getX() <= ((Block)obj).getX() + ((Block)obj).getWidth() + Math.abs(getxSpeed()));
+	}
+	
+	@Override
+	public boolean didCollideRight(Object obj) {
+		
+		//System.out.println(getX() >= ((Block)obj).getX() + ((Block)obj).getWidth());
+		return (getX() >= ((Block)obj).getX() && getX() < ((Block)obj).getX() + ((Block)obj).getWidth() + Math.abs(getxSpeed()));
+	}
+	
+	@Override
+	public boolean didCollideTop(Object obj) {
+		return getY() >= ((Block)obj).getY() && getY() <= ((Block)obj).getY() + ((Block)obj).getHeight();
+	}
+	
+	@Override
+	public boolean didCollideBottom(Object obj) {
+		return getY() + getHeight() >= ((Block)obj).getY() && getY() + getHeight() < ((Block)obj).getY() + ((Block)obj).getHeight();
+	}
+	
    //add a toString() method
 	
 	public String toString() {

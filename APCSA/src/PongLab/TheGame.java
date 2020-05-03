@@ -13,6 +13,7 @@ public class TheGame extends JFrame
 
 	public TheGame()
 	{
+		/*
 		super("PONG");
 		setSize(WIDTH,HEIGHT);
 
@@ -24,6 +25,21 @@ public class TheGame extends JFrame
 		setVisible(true);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		*/
+		
+		
+		super("PONG");
+		setSize(WIDTH,HEIGHT);
+
+		Pong2 game = new Pong2();
+
+		((Component)game).setFocusable(true);
+		getContentPane().add(game);
+
+		setVisible(true);
+
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
 
 	public static void main( String args[] )

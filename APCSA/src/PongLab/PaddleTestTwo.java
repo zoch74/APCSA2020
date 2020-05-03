@@ -52,6 +52,7 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
 	public void update(Graphics window)
 	{
 		paint(window);
+		System.out.println("paint(window) called");
 	}
 
 	public void paint(Graphics window)
@@ -125,7 +126,7 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
    	{
    		while(true)
    		{
-   		   Thread.currentThread().sleep(8);
+   			Thread.currentThread().sleep(8);
             repaint();
          }
       }catch(Exception e)
