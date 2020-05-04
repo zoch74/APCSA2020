@@ -101,7 +101,7 @@ public class Pong2 extends Canvas implements KeyListener, Runnable
 
 
 		//see if the bBall hits the left paddle
-		
+		/*
 		if (bBall.getX() <= leftPaddle.getX() + leftPaddle.getWidth() + Math.abs(bBall.getxSpeed()) && (bBall.getY() >= leftPaddle.getY() && bBall.getY() <= leftPaddle.getY() + leftPaddle.getHeight() || bBall.getY() + bBall.getHeight() >= leftPaddle.getY() && bBall.getY() + bBall.getHeight() < leftPaddle.getY() + leftPaddle.getHeight())){
 			
 			if (bBall.getX() <= leftPaddle.getX() + leftPaddle.getWidth() - Math.abs(bBall.getxSpeed())) {
@@ -116,17 +116,32 @@ public class Pong2 extends Canvas implements KeyListener, Runnable
 		//see if the bBall hits the right paddle -- NEED TO FIX
 		
 		if (bBall.getX() >= rightPaddle.getX() && bBall.getX() < rightPaddle.getX() + rightPaddle.getWidth() + Math.abs(bBall.getxSpeed()) && bBall.getY() >= rightPaddle.getY() && bBall.getY() <= rightPaddle.getY() + rightPaddle.getHeight()) {
-			if (bBall.getX() <= leftPaddle.getX() + leftPaddle.getWidth() - Math.abs(bBall.getxSpeed())) {
+			if (bBall.getX() <= rightPaddle.getX() + rightPaddle.getWidth() - Math.abs(bBall.getxSpeed())) {
 				bBall.setySpeed(-bBall.getySpeed());
 			}
 			else {
 				bBall.setxSpeed(-bBall.getxSpeed());
 			}
 		}
+		*/
 		
+		if (bBall.didCollideRight(leftPaddle) &&  !(bBall.didCollideTop(leftPaddle)) && !(bBall.didCollideBottom(leftPaddle))) {
+			if (bBall.getX() <= leftPaddle.getX() + leftPaddle.getWidth() - Math.abs(bBall.getxSpeed())) {
+				bBall.setySpeed(-bBall.getySpeed());
+			}
+			else {
+				bBall.setxSpeed(-bBall.getxSpeed());
+			}
+			
+		}
 		
-		if (bBall.didCollideRight(rightPaddle)) {
-			bBall.setySpeed(-bBall.getySpeed());
+		if (bBall.didCollideLeft(rightPaddle) &&  !(bBall.didCollideTop(rightPaddle)) && !(bBall.didCollideBottom(rightPaddle))) {
+			if (bBall.getX() >= rightPaddle.getX() + rightPaddle.getWidth() + Math.abs(bBall.getxSpeed())) {
+				bBall.setySpeed(-bBall.getySpeed());
+			}
+			else {
+				bBall.setxSpeed(-bBall.getxSpeed());
+			}
 		}
 		
 		
@@ -174,11 +189,6 @@ public class Pong2 extends Canvas implements KeyListener, Runnable
 		{
 			rightPaddle.moveDownAndDraw(graphToBack);
 		}
-
-
-
-
-
 
 
 

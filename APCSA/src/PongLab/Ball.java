@@ -96,24 +96,28 @@ public void moveAndDraw(Graphics window)
 	public boolean didCollideLeft(Object obj) {
 		
 		//System.out.println(getX() <= ((Block)obj).getX() + ((Block)obj).getWidth());
-		return (getX() <= ((Block)obj).getX() + ((Block)obj).getWidth() + Math.abs(getxSpeed()));
+		//return (getX() <= ((Block)obj).getX() + ((Block)obj).getWidth() + Math.abs(getxSpeed()));
+		return (getX() + getWidth() >= ((Block)obj).getX());
 	}
 	
 	@Override
 	public boolean didCollideRight(Object obj) {
 		
 		//System.out.println(getX() >= ((Block)obj).getX() + ((Block)obj).getWidth());
-		return (getX() >= ((Block)obj).getX() && getX() < ((Block)obj).getX() + ((Block)obj).getWidth() + Math.abs(getxSpeed()));
+		//return (getX() >= ((Block)obj).getX() && getX() < ((Block)obj).getX() + ((Block)obj).getWidth() + Math.abs(getxSpeed()));
+		return (((Block)obj).getX() + ((Block)obj).getWidth() >= getX());
 	}
 	
 	@Override
 	public boolean didCollideTop(Object obj) {
-		return getY() >= ((Block)obj).getY() && getY() <= ((Block)obj).getY() + ((Block)obj).getHeight();
+		//return getY() >= ((Block)obj).getY() && getY() <= ((Block)obj).getY() + ((Block)obj).getHeight();
+		return getY() <= ((Block)obj).getY();
 	}
 	
 	@Override
 	public boolean didCollideBottom(Object obj) {
-		return getY() + getHeight() >= ((Block)obj).getY() && getY() + getHeight() < ((Block)obj).getY() + ((Block)obj).getHeight();
+		//return getY() + getHeight() >= ((Block)obj).getY() && getY() + getHeight() < ((Block)obj).getY() + ((Block)obj).getHeight();
+		return (getY() >= ((Block)obj).getY() + ((Block)obj).getHeight());
 	}
 	
    //add a toString() method
