@@ -24,6 +24,7 @@ public class Pong2 extends Canvas implements KeyListener, Runnable
 	private BufferedImage back;
 	private int rightScore;
 	private int leftScore;
+	private Wall leftWall, rightWall, topWall, botWall;
 
 
 	public Pong2()
@@ -43,6 +44,15 @@ public class Pong2 extends Canvas implements KeyListener, Runnable
 		rightScore = 0;
 		
 		leftScore = 0;
+		
+		leftWall = new Wall(0, 0, 10, 600, Color.white);
+		
+		rightWall = new Wall(790, 0, 10, 600, Color.white);
+		
+		topWall = new Wall(0, 0, 800, 10, Color.white);
+		
+		botWall = new Wall(0, 570, 800, 10, Color.white);
+		
     
     	setBackground(Color.WHITE);
 		setVisible(true);
@@ -73,9 +83,39 @@ public class Pong2 extends Canvas implements KeyListener, Runnable
 		bBall.moveAndDraw(graphToBack);
 		leftPaddle.draw(graphToBack);
 		rightPaddle.draw(graphToBack);
+		leftWall.draw(graphToBack);
+		rightWall.draw(graphToBack);
+		topWall.draw(graphToBack);
+		botWall.draw(graphToBack);
 
-
+		
+		if (bBall.didCollideLeft(rightWall)) {
+			System.out.println("collide left of right wall");
+			bBall.setIsColliding(true);
+			bBall.setxSpeed(-bBall.getxSpeed());
+			leftScore++;
+			System.out.println("left: " + leftScore);
+		}
+		bBall.setIsColliding(false);
+		
+		if (bBall.didCollideRight(leftWall)) {
+			System.out.println("collide right of left wall");
+			bBall.setIsColliding(true);
+			bBall.setxSpeed(-bBall.getxSpeed());
+			rightScore++;
+			System.out.println("right: " + rightScore);
+		}
+		bBall.setIsColliding(false);
+		if (!(bBall.didCollideBottom(topWall) && bBall.didCollideTop(botWall))) {
+			bBall.setIsColliding(true);
+			System.out.println("collide with top or bottom");
+			bBall.setySpeed(-bBall.getySpeed());
+		}
+		bBall.setIsColliding(false);
+		
+		
 		//see if bBall hits left wall or right wall
+		/*
 		if(bBall.getX()<=10)
 		{
 			bBall.setxSpeed(-bBall.getxSpeed());
@@ -97,7 +137,7 @@ public class Pong2 extends Canvas implements KeyListener, Runnable
 		{
 			bBall.setySpeed(-bBall.getySpeed());
 		}
-
+		*/
 
 
 		//see if the bBall hits the left paddle
@@ -126,6 +166,7 @@ public class Pong2 extends Canvas implements KeyListener, Runnable
 		*/
 		
 		if (bBall.didCollideRight(leftPaddle) &&  !(bBall.didCollideTop(leftPaddle)) && !(bBall.didCollideBottom(leftPaddle))) {
+			bBall.setIsColliding(true);
 			if (bBall.getX() <= leftPaddle.getX() + leftPaddle.getWidth() - Math.abs(bBall.getxSpeed())) {
 				bBall.setySpeed(-bBall.getySpeed());
 			}
@@ -134,8 +175,10 @@ public class Pong2 extends Canvas implements KeyListener, Runnable
 			}
 			
 		}
+		bBall.setIsColliding(false);
 		
 		if (bBall.didCollideLeft(rightPaddle) &&  !(bBall.didCollideTop(rightPaddle)) && !(bBall.didCollideBottom(rightPaddle))) {
+			bBall.setIsColliding(true);
 			if (bBall.getX() >= rightPaddle.getX() + rightPaddle.getWidth() + Math.abs(bBall.getxSpeed())) {
 				bBall.setySpeed(-bBall.getySpeed());
 			}
@@ -143,6 +186,7 @@ public class Pong2 extends Canvas implements KeyListener, Runnable
 				bBall.setxSpeed(-bBall.getxSpeed());
 			}
 		}
+		bBall.setIsColliding(false);
 		
 		
 		/*

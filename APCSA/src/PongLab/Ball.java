@@ -10,6 +10,7 @@ public class Ball extends Block implements Collidable
 {
 	private int xSpeed;
 	private int ySpeed;
+	private boolean isColliding;
 
 	public Ball()
 	{
@@ -17,6 +18,7 @@ public class Ball extends Block implements Collidable
 		super();
 		xSpeed = 3;
 		ySpeed = 1;
+		isColliding = false;
 	}
 
 	//add the other Ball constructors
@@ -24,30 +26,35 @@ public class Ball extends Block implements Collidable
 		super(x, y);
 		xSpeed = 4;
 		ySpeed = 2;
+		isColliding = false;
 	}
 	
 	public Ball(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		xSpeed = 4;
 		ySpeed = 2;
+		isColliding = false;
 	}
 	
 	public Ball(int x, int y, int w, int h, Color c) {
 		super(x, y, w, h, c);
 		xSpeed = 4;
 		ySpeed = 2;
+		isColliding = false;
 	}
 	
 	public Ball(int x, int y, int w, int h, int xSpd, int ySpd) {
 		super(x, y, w, h);
 		xSpeed = xSpd;
 		ySpeed = ySpd;
+		isColliding = false;
 	}
 	
 	public Ball(int x, int y, int w, int h, Color c, int xSpd, int ySpd) {
 		super(x, y, w, h, c);
 		xSpeed = xSpd;
 		ySpeed = ySpd;
+		isColliding = false;
 	}
 	
 
@@ -60,6 +67,10 @@ public class Ball extends Block implements Collidable
 	public int getySpeed() {
 		return ySpeed;
 	}
+	
+	public boolean getIsColliding() {
+		return isColliding;
+	}
 
 	public void setxSpeed(int x) {
 		xSpeed = x;
@@ -67,6 +78,9 @@ public class Ball extends Block implements Collidable
 
 	public void setySpeed(int y) {
 		ySpeed = y;
+	}
+	public void setIsColliding(boolean isCol) {
+		isColliding = isCol;
 	}
 
 public void moveAndDraw(Graphics window)
@@ -97,6 +111,7 @@ public void moveAndDraw(Graphics window)
 		
 		//System.out.println(getX() <= ((Block)obj).getX() + ((Block)obj).getWidth());
 		//return (getX() <= ((Block)obj).getX() + ((Block)obj).getWidth() + Math.abs(getxSpeed()));
+		//System.out.println("collide left of " + obj);
 		return (getX() + getWidth() >= ((Block)obj).getX());
 	}
 	
@@ -105,18 +120,21 @@ public void moveAndDraw(Graphics window)
 		
 		//System.out.println(getX() >= ((Block)obj).getX() + ((Block)obj).getWidth());
 		//return (getX() >= ((Block)obj).getX() && getX() < ((Block)obj).getX() + ((Block)obj).getWidth() + Math.abs(getxSpeed()));
+		//System.out.println("collide right of " + obj);
 		return (((Block)obj).getX() + ((Block)obj).getWidth() >= getX());
 	}
 	
 	@Override
 	public boolean didCollideTop(Object obj) {
 		//return getY() >= ((Block)obj).getY() && getY() <= ((Block)obj).getY() + ((Block)obj).getHeight();
+		//System.out.println("collide top of " + obj);
 		return getY() <= ((Block)obj).getY();
 	}
 	
 	@Override
 	public boolean didCollideBottom(Object obj) {
 		//return getY() + getHeight() >= ((Block)obj).getY() && getY() + getHeight() < ((Block)obj).getY() + ((Block)obj).getHeight();
+		//System.out.println("collide bottom of " + obj);
 		return (getY() >= ((Block)obj).getY() + ((Block)obj).getHeight());
 	}
 	
