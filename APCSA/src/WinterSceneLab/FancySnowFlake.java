@@ -8,5 +8,38 @@ import java.awt.Graphics;
 import java.awt.Polygon;
 
 //extend the AbstractShape class to make a FancySnowFlake class
+public class FancySnowFlake extends AbstractShape
+{
+	public FancySnowFlake(int x, int y, int w, int h )
+	   {
+			super(x, y, w, h, Color.WHITE, 0, 3);
+	   }
 
+	
+	
+	@Override
+	public void draw(Graphics window) {
+		// TODO Auto-generated method stub
+		window.fillOval(getXPos(), getYPos(), getWidth(), getHeight());
+		
+	}
+	public void draw(Graphics window, Color col)
+	{
+		 window.setColor(col);
+		 window.fillOval(getXPos(), getYPos(), getWidth(), getHeight());
+
+	}
+
+	@Override
+	public void moveAndDraw(Graphics window) {
+		// TODO Auto-generated method stub
+		draw(window, Color.white);
+
+	    setXPos(getXPos()+getXSpeed());
+			//setY
+	    setYPos(getYPos()+getYSpeed());
+			//draw the ball at its new location
+	    draw(window);
+	}
+}
 
