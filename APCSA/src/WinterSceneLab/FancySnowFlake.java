@@ -23,18 +23,11 @@ public class FancySnowFlake extends AbstractShape
 		window.fillOval(getXPos(), getYPos(), getWidth(), getHeight());
 		
 	}
-	public void draw(Graphics window, Color col)
-	{
-		 window.setColor(col);
-		 window.fillOval(getXPos(), getYPos(), getWidth(), getHeight());
-
-	}
 
 	@Override
 	public void moveAndDraw(Graphics window) {
 		// TODO Auto-generated method stub
-		draw(window, Color.white);
-
+		window.setColor(Color.white);
 	    setXPos(getXPos()+getXSpeed());
 			//setY
 	    setYPos(getYPos()+getYSpeed());

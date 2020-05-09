@@ -16,9 +16,6 @@ public class Tree extends AbstractShape
 
    public void draw(Graphics window)
    {
-      //window.fillTriangle(getXPos(), getYPos(), getWidth(), getHeight());
-     // window.fillOval(getXPos()+15, getYPos()-(getHeight()/2), getWidth()-30, getHeight()-30);
-      //window.fillOval(getXPos()+30, getYPos()-getHeight(), getWidth()-60, getHeight()-60);
 	   window.setColor(Color.green);
 	   window.fillPolygon(new int[] {getXPos(), getXPos()+(getWidth()/2), getXPos()+getWidth()}, new int[] {getYPos(), getYPos()-getHeight(), getYPos()}, 3);
 	   window.setColor(Color.black);
