@@ -19,18 +19,45 @@ public class Alien extends MovingThing
 	{
 		super(0,0,30,30);
 		speed = 0;
+		try
+		{
+			URL url = getClass().getResource("/StarfighterLab/alien.jpg");
+			image = ImageIO.read(url);
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
 	}
 
 	public Alien(int x, int y)
 	{
 		super(x,y,30,30);
-		speed = 10;
+		speed = 1;
+		try
+		{
+			URL url = getClass().getResource("/StarfighterLab/alien.jpg");
+			image = ImageIO.read(url);
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
 	}
 
 	public Alien(int x, int y, int s)
 	{
 		super(x,y,30,30);
-		speed = 10;
+		speed = s;
+		try
+		{
+			URL url = getClass().getResource("/StarfighterLab/alien.jpg");
+			image = ImageIO.read(url);
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
 	}
 
 	public Alien(int x, int y, int w, int h, int s)
@@ -74,7 +101,7 @@ public class Alien extends MovingThing
 
 	public void draw( Graphics window )
 	{
-   	window.drawImage(image,getX(),getY(),getWidth(),getHeight(),null);
+		window.drawImage(image,getX(),getY(),getWidth(),getHeight(),null);
 	}
 
 	public String toString()

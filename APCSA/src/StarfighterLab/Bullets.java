@@ -22,7 +22,7 @@ public class Bullets
 
 	public void add(Ammo al)
 	{
-		ammo.add(new Ammo());
+		ammo.add(al);
 	}
 
 	//post - draw each Ammo
@@ -36,14 +36,23 @@ public class Bullets
 	public void moveEmAll()
 	{
 		for (Ammo a : ammo) {
-			a.move("DOWN");
+			a.move("UP");
 		}
 	}
 
 	public void cleanEmUp()
 	{
+		if (ammo.size()>0) {
+			for (int i = 0; i < ammo.size(); i++) {
+				ammo.remove(0);
+			}
+		}
 	}
 
+	public Ammo getAmmo(int num) {
+		return ammo.get(num);
+	}
+	
 	public List<Ammo> getList()
 	{
 		return ammo;

@@ -11,6 +11,8 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
+import PongLab.Block;
+
 public class Ammo extends MovingThing
 {
 	private int speed;
@@ -18,13 +20,13 @@ public class Ammo extends MovingThing
 	public Ammo()
 	{
 		super(0,0);
-		speed = 5;
+		speed = 3;
 	}
 
 	public Ammo(int x, int y)
 	{
 		super(x,y);
-		speed = 5;
+		speed = 3;
 	}
 
 	public Ammo(int x, int y, int s)
@@ -53,7 +55,12 @@ public class Ammo extends MovingThing
 	
 	public void move( String direction )
 	{
-		setY(getY() - speed);
+		if (direction == "UP") {
+			setY(getY() - speed);
+		}
+		if (direction == "DOWN") {
+			setY(getY() + speed);
+		}
 		
 	}
 
