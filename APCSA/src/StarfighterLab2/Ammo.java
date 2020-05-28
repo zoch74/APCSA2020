@@ -1,4 +1,4 @@
-package StarfighterLab;
+package StarfighterLab2;
 //(c) A+ Computer Science
 //www.apluscompsci.com
 //Name -
