@@ -2,8 +2,11 @@ package CompanyOrganizer;
 
 import static java.lang.System.in;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class CompanyRunner {
 	
@@ -48,7 +51,7 @@ public class CompanyRunner {
 			runHWorker(keyboard, c);
 		}
 		else {
-			runEnd();
+			runEnd(c);
 		}
 	}
 	
@@ -65,6 +68,7 @@ public class CompanyRunner {
 			int addNum = keyboard.nextInt();
 			
 			((CEO)c.getEmployee(0)).addEmployee(tempChoice-1, addNum, c);
+			runCEO(keyboard, c);
 			
 		}
 		else if (choice == 2) {
@@ -74,6 +78,7 @@ public class CompanyRunner {
 			int addNum = keyboard.nextInt();
 			
 			((CEO)c.getEmployee(0)).removeEmployee(tempChoice-1, addNum, c);
+			runCEO(keyboard, c);
 			
 		}
 		else if (choice == 3) {
@@ -81,6 +86,7 @@ public class CompanyRunner {
 			int spendMoney = keyboard.nextInt();
 			
 			((CEO)c.getEmployee(0)).spendMoney(spendMoney, c);
+			runCEO(keyboard, c);
 		}
 		else if (choice ==4) {
 			System.out.println("Select an employee type: (1 = CEO, 2 = Accountant, 3 = Manager, 4 = Salary Worker, 5 = Hourly Worker)");
@@ -89,12 +95,15 @@ public class CompanyRunner {
 			int newSal = keyboard.nextInt();
 			
 			((CEO)c.getEmployee(0)).changeSalary(tempChoice-1, newSal, c);
+			runCEO(keyboard, c);
 		}
 		else if (choice == 5) {
 			System.out.println("Your benefits are: " + ((CEO)c.getEmployee(0)).getBenefits());
+			runCEO(keyboard, c);
 		}
 		else if (choice == 6) {
 			System.out.println("The company budget is $" + ((CEO)c.getEmployee(0)).getBudget(c));
+			runCEO(keyboard, c);
 		}
 		else {
 			whichEmployee(keyboard,c);
@@ -110,15 +119,18 @@ public class CompanyRunner {
 		
 		if (choice == 1) {
 			System.out.println(("The company expenses is $" + ((Accountant)c.getEmployee(1)).getExpenses(c)));
+			runAccountant(keyboard, c);
 		}
 		else if (choice == 2) {
 			System.out.println("Select an employee type: (1 = CEO, 2 = Accountant, 3 = Manager, 4 = Salary Worker, 5 = Hourly Worker)");
 			int tempChoice = keyboard.nextInt();
 			
 			System.out.println("This employee has a salary of $" + ((Accountant)c.getEmployee(1)).getSalary(tempChoice - 1, c));
+			runAccountant(keyboard, c);
 		}
 		else if (choice == 3) {
 			System.out.println("Your benefits are: " + ((Accountant)c.getEmployee(1)).getBenefits());
+			runAccountant(keyboard, c);
 		}
 		else {
 			whichEmployee(keyboard,c);
@@ -133,6 +145,7 @@ public class CompanyRunner {
 		
 		if (choice == 1) {
 			System.out.println(("The team budget is $" + ((Manager)c.getEmployee(2)).getBudget()));
+			runManager(keyboard, c);
 		}
 		else if (choice == 2) {
 			System.out.println("How much are you spending? ");
@@ -146,10 +159,12 @@ public class CompanyRunner {
 			else {
 				System.out.println("You are underbudget");
 			}
+			runManager(keyboard, c);
 			
 		}
 		else if (choice == 3) {
 			System.out.println("Your benefits are: " + ((Manager)c.getEmployee(2)).getBenefits());
+			runManager(keyboard, c);
 		}
 		else {
 			whichEmployee(keyboard,c);
@@ -164,9 +179,11 @@ public class CompanyRunner {
 		
 		if (choice == 1) {
 			System.out.println(("Your weekly salary is $" + ((SalaryWorker)c.getEmployee(3)).getSalary()));
+			runSWorker(keyboard, c);
 		}
 		else if (choice == 2) {
 			System.out.println("Your benefits are: " + ((SalaryWorker)c.getEmployee(3)).getBenefits());
+			runSWorker(keyboard, c);
 		}
 		else {
 			whichEmployee(keyboard,c);
@@ -183,14 +200,35 @@ public class CompanyRunner {
 			System.out.println("How many hours did you work this week? ");
 			int hours = keyboard.nextInt();
 			System.out.println(("Your weekly wage is $" + ((HourlyWorker)c.getEmployee(4)).getWage(hours)));
+			runHWorker(keyboard, c);
 		}
 		else {
 			whichEmployee(keyboard,c);
 		}
 	}
 	
-	public static void runEnd() {
+	public static void runEnd(Company c) throws IOException {
 		System.out.println("\nThank you for using Company Organizer. Your report will be produced shortly.");
+		File report = new File("src/CompanyOrganizer/companyReport.txt");
+		try{
+			FileWriter writer = new FileWriter("companyReport.txt");
+			writer.write(c.getName());
+			writer.write(c.getEmployee(0) + ", " + c.getEmployee(1) + ", " + c.getEmployee(2) + ", " + c.getEmployee(3) + ", " + c.getEmployee(4) + ", ");
+			writer.write(c.getBudget());
+			writer.write(c.getExpenses());
+			writer.write("CEO\n" + c.getEmployee(0).getNum() + "\n" + c.getEmployee(0).getSalary() + "\n" + c.getEmployee(0).getBenefits());
+			writer.write("Accountant\n" + c.getEmployee(1).getNum() + "\n" + c.getEmployee(1).getSalary() + "\n" + c.getEmployee(1).getBenefits());
+			writer.write("Manager\n" + c.getEmployee(2).getNum() + "\n" + c.getEmployee(2).getSalary() + "\n" + c.getEmployee(2).getBenefits() + ((Manager)c.getEmployee(2)).getBudget());
+			writer.write("Salary Worker\n" + c.getEmployee(3).getNum() + "\n" + c.getEmployee(3).getSalary() + "\n" + c.getEmployee(3).getBenefits());
+			writer.write("Hourly Worker\n" + c.getEmployee(1).getNum() + "\n" + c.getEmployee(1).getSalary());
+			writer.close();
+		} catch (IOException e) {
+			System.out.println("file was not made successfully");
+		}
+
+		//code to create and write files sourced from https://www.w3schools.com/java/java_files_create.asp
+		
+		
 		
 	}
 	
