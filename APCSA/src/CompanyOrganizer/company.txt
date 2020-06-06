@@ -1,0 +1,27 @@
+Zoe's Company
+CEO, Accountant, Manager, SalaryWorker, HourlyWorker
+50000
+30000
+CEO
+1
+15000
+30 vacation days, health care, travel points, free food
+Accountant
+5
+6000
+20 vacation days, health care, computer credits
+Manager
+10
+5000
+15 vacation days, health care, phone credits
+5000
+SalaryWorker
+30
+1500
+10 vacation days, health care
+HourlyWorker
+40
+20
+ 
+
+
