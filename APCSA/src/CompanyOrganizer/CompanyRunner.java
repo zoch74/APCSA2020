@@ -25,10 +25,11 @@ public class CompanyRunner {
 		
 		whichEmployee(keyboard, comp);
 		
+		
 	}
 	
 	public static void whichEmployee(Scanner keyboard, Company c) {
-		System.out.println("Which employee are you? (1 = CEO, 2 = Accountant, 3 = Manager, 4 = Salary Worker, 5 = Hourly Worker)");
+		System.out.println("Which employee are you? (1 = CEO, 2 = Accountant, 3 = Manager, 4 = Salary Worker, 5 = Hourly Worker 6 = Stop)");
 		int role = keyboard.nextInt();
 		
 		if (role == 1) {
@@ -43,8 +44,11 @@ public class CompanyRunner {
 		else if (role == 4) {
 			runSWorker(keyboard, c);
 		}
-		else {
+		else if (role == 5) {
 			runHWorker(keyboard, c);
+		}
+		else {
+			runEnd();
 		}
 	}
 	
@@ -183,6 +187,11 @@ public class CompanyRunner {
 		else {
 			whichEmployee(keyboard,c);
 		}
+	}
+	
+	public static void runEnd() {
+		System.out.println("\nThank you for using Company Organizer. Your report will be produced shortly.");
+		
 	}
 	
 	
